@@ -1,0 +1,54 @@
+# Start project
+scrapy startproject <name>
+//name: bookscraper
+
+# Creating a spider
+scrapy genspider <name> <url>
+// name: bookspider 
+// url:  books.toscrape.com
+
+# Initiate Scrapy Shell
+---> pip install ipython
+
+[Go to scrapy.cfg -> under settings -> "add"]
+```
+    [settings]
+    default = bookscraper.settings
+    shell = ipython
+```
+
+---> scrapy shell
+[Initiates the shell]
+
+# Fetch 
+fetch('<URL>')
+//URL : https://books.toscrape.com/
+
+response.css('<tag>.<class name>')
+// tag: article
+// class name: product_pod
+
+response.css('article.product_pod').get()
+// Returns the html content for the first element found (i.e book)
+
+books = response.css('article.product_pod')
+// Helps to assign the values to a particular variable
+
+# Exit Scrapy shell 
+Exit
+
+# Run a spider
+scrapy crawl <name of the spider>
+// name of the spider: bookspider
+
+# Save it to a file 
+scrapy crawl <name of the spider> -O <name of the file>
+// name of the spider: bookspider
+// name of the file: bookdata.csv
+// We can also use a json file -> bookdata.json 
+
+# Use the settings.py 
+FEEDS = {'data.csv': {'format': 'csv'}}
+[OR] - overwrite it in a spider
+custom_settings = {'FEEDS': { 'data.csv': { 'format': 'csv','overwrite':True}}}
+

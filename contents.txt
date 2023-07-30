@@ -1,0 +1,15 @@
+book = books[0]
+
+# Book Name
+book.css('h3 a::text').get()
+
+# Book Price
+book.css('div.product_price p.price_color::text').get()
+[OR]
+book.css('.product_price .price_color::text').get()
+
+# Book URL
+book.css('h3 a').attrib['href']
+
+# Next Page Link
+response.css('li.next a').attrib['href]
